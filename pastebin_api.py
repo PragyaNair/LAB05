@@ -35,16 +35,14 @@ def post_new_paste(title, body_text, expiration='N', listed=True):
 
     #Check whether the request was successful 
     if resp_msg.status_code == requests.codes.ok:
-        pass
+        print(f'New paste created: { resp_msg.text}')
+        return resp_msg.text 
     else:
         print(f'Request failed.')
         print(f'Status code: {resp_msg.status_code} ({resp_msg.reason})')
 
-    
-    return
-
 def main():
-    post_new_paste('Awesome Paste', 'This paste is not useful.\n delete whenever')
+    post_new_paste('Awesome Paste', 'This paste is not useful.\n delete whenever.', '1H', False)
 
 if __name__== '__main__':
     main()
